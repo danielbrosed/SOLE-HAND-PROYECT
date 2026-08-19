@@ -63,6 +63,7 @@ Actualizado a 19 de agosto de 2026.
 | Panel del cliente | Definición cerrada, prototipo inicial | `███░░░░░░░` 25 % |
 | Programa de afiliados | En diseño | `██░░░░░░░░` 15 % |
 | Confirmación de citas | En diseño | `█░░░░░░░░░` 10 % |
+| Recursos gratuitos | Carpeta abierta, primeros en preparación | `█░░░░░░░░░` 5 % |
 
 La bitácora completa, con los hitos fechados, está en [docs/bitacora.md](docs/bitacora.md).
 
@@ -80,6 +81,10 @@ Resumen rápido; el detalle está en [docs/arquitectura.md](docs/arquitectura.md
 Toda la marca vive en un mismo mundo: mármol de Carrara, cromo y negro. El símbolo es un enso, un círculo abierto: la inteligencia artificial hace el trabajo y una mano humana, la última, decide. Las piezas para redes se componen con un sistema propio que garantiza que cada publicación sale del mismo molde.
 
 ![Portadas de la serie para redes](media/social-portadas.jpg)
+
+## Recursos gratuitos
+
+En [recursos/](recursos/) irán las guías, plantillas y pequeñas herramientas que el proyecto libere gratis. La regla es la de siempre: solo se publica lo que ya se ha usado de verdad por dentro. De momento la carpeta está recién abierta y lo dice tal cual.
 
 ## Contacto
 
