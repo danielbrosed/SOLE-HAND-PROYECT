@@ -9,13 +9,25 @@ Este documento cuenta cómo está montado Sole Hand por dentro, sin entrar en el
    visitante ──────────►│  Web pública (solehand.com)  │
                         │  React 18 + Vite + TS        │
                         │  ES en raíz · EN en /en/     │
+                        └───────┬──────────────┬───────┘
+                                │ formulario   │ registro
+                                ▼              │
+                 ┌──────────────────────────┐  │
+                 │  Servicio de leads (Node)│  │
+                 │  valida, avisa al equipo │  │
+                 │  y responde              │  │
+                 └──────────────────────────┘  │
+                                               ▼
+                        ┌──────────────────────────────┐
+     socio ────────────►│  Plataforma (app.solehand)   │
+                        │  comunidad · herramientas    │
+                        │  cuenta · portal de afiliado │
                         └──────────────┬───────────────┘
-                                       │ formulario
                                        ▼
                         ┌──────────────────────────────┐
-                        │  Servicio de leads (Node)    │
-                        │  valida, avisa al equipo y   │
-                        │  responde al interesado      │
+                        │  Backend propio (Europa)     │
+                        │  PostgreSQL con políticas    │
+                        │  por fila · funciones borde  │
                         └──────────────────────────────┘
 
    cliente que llama ──► Agente de voz ──► resumen de llamada al negocio
@@ -36,6 +48,18 @@ Web y servicio de leads son contenedores independientes detrás de nginx, en un 
 **Seguridad por defecto.** Cabeceras configuradas a mano en nginx (política de contenido, marcos, referrer), HTML servido sin caché para poder corregir rápido, y el correo de la empresa fuera del HTML servido: los robots que rastrean direcciones eran la fuente del spam, así que la única puerta escrita es el formulario.
 
 **Docker para que el despliegue sea aburrido.** Build reproducible, misma imagen en local y en el servidor, y el VPS solo ejecuta contenedores.
+
+## La plataforma de socios
+
+**El alta no tiene cola.** Durante los primeros meses se entraba con solicitud: alguien la leía y mandaba una invitación. Funcionaba, pero cada alta costaba una decisión y un correo, y quien quería entrar esperaba. Desde el 24 de agosto de 2026 el registro es directo —socio o afiliado, contraseña propia y dentro—, y el formulario de contarnos el caso sigue existiendo para quien prefiere hablar antes. Lo que antes filtraba una persona lo filtran ahora un campo trampa para robots, un límite por dirección y el consentimiento obligatorio.
+
+**La separación la decide la base de datos, no la pantalla.** Cada tabla lleva políticas a nivel de fila: qué puede leer un socio, qué puede leer el equipo y qué no puede leer nadie está escrito en el motor, no en el código que pinta. Una pantalla mal programada puede enseñar algo de menos; no puede enseñar algo de más. Las operaciones que necesitan privilegio viven en funciones en el borde, y la clave con permisos nunca llega al navegador.
+
+**El consentimiento se guarda entero, no marcado.** Al aceptar las condiciones se guarda la versión, el texto íntegro de esa versión, la fecha y la dirección desde la que se aceptó. Cambiar el texto obliga a subir la versión: el histórico no se reescribe, de modo que siempre se puede saber qué aceptó exactamente cada persona.
+
+**Borrar es borrar, sin dejar huecos.** Una cuenta se puede retirar de verdad: se le quita el nombre, la foto, las redes y el acceso, y el correo se sustituye por uno inválido. Lo que esa persona escribió en la comunidad se queda, sin su nombre. Borrarlo dejaría a medias las conversaciones de los demás, que no han pedido nada.
+
+**El sistema de diseño se verifica solo.** Los colores y los tamaños salen de una escala única, y hay comprobaciones que tumban el build si alguien se sale: ningún color fuera de la paleta, ninguna medida inventada, ninguna esquina que no venga de la escala. Los contrastes se recalculan en cada pasada contra el mínimo de accesibilidad, y antes de cada despliegue se recorren todas las pantallas en un navegador de verdad buscando desbordes, errores de consola y zonas de toque demasiado pequeñas para un dedo.
 
 ## El agente de voz
 
