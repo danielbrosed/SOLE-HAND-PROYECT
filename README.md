@@ -2,120 +2,142 @@
   <img src="media/marca.png" alt="Sole Hand" width="340">
 </p>
 
-<h3 align="center">Tú pones el problema. Nosotros, el producto.</h3>
+<h3 align="center">Emprender ya no se hace solo.</h3>
 
 <p align="center">
-  <a href="https://solehand.com">solehand.com</a> · español / english
+  <a href="https://solehand.com">solehand.com</a> · <a href="#español">español</a> / <a href="#english">english</a>
 </p>
 
 ---
 
-Sole Hand es una agencia de inteligencia artificial para negocios en España, construida con una regla simple: **no se vende nada que no esté ya funcionando en un negocio real**.
+## Español
 
-Este repositorio es el escaparate público del proyecto: qué se está construyendo, en qué estado está y cómo está hecho por dentro, a nivel de arquitectura. El código de producción vive en repositorios privados.
+Sole Hand es una comunidad de emprendedores: gente que ya tiene un negocio y gente que quiere empezar. Nos vemos en persona, usamos herramientas de inteligencia artificial propias en la Sole Hand App y quien recomienda la comunidad cobra por ello.
+
+Este repositorio es el escaparate público del proyecto: qué se está construyendo, en qué estado está y cómo está hecho por dentro, a nivel de arquitectura. El código de producción vive en repositorios privados. Aquí no hay precios: están en la web, que es donde se auditan.
 
 ![Portada de solehand.com](media/web-hero.jpg)
 
-## Qué hay construido
+### Qué hay construido
 
-### El agente de voz
+#### La comunidad
 
-El primer producto. Un asistente que atiende el teléfono entrante de un negocio cuando su equipo no puede: fuera de horario, cuando comunica o cuando entran varias llamadas a la vez.
-
-| Hace | No hace |
-| --- | --- |
-| Contesta en castellano, sin dejar sonar el teléfono | No decide por el negocio |
-| Recoge la cita completa: nombre, motivo y hora preferida | No escribe directamente en la agenda |
-| Se presenta como asistente virtual nada más descolgar | No se hace pasar por una persona |
-| Deja un resumen claro de cada llamada | No obliga a escuchar grabaciones |
-
-La frontera está puesta a propósito: el agente recoge y entrega, y la última palabra siempre es de una persona. De ahí el nombre del proyecto.
-
-![Sección del agente de voz](media/web-agente.jpg)
-
-### La comunidad
-
-Un grupo privado de dueños de negocio donde cada uno pone sobre la mesa lo que le hace perder tiempo o dinero. Cada dos semanas hay una sesión en directo de 90 minutos: un negocio cuenta su caso y el resto aporta. Dentro se ven las soluciones funcionando antes que nadie.
-
-Empezó en WhatsApp, que era lo que había a mano en agosto para no hacer esperar a nadie, y desde entonces tiene casa propia: la plataforma que se cuenta más abajo. 19 € al mes, sin permanencia. El alta es directa: se registra uno mismo y entra.
+Quien lleva años con su negocio y quien está montando el primero, en el mismo sitio. La conversación vive en grupos de WhatsApp por sector; las quedadas van incluidas en todas las membresías; los eventos y retiros que se organizan llevan su ficha (cuándo, dónde, qué incluye, qué no y en qué membresías va incluida la entrada) y las plazas se reservan desde la app por orden de reserva.
 
 ![Sección de la comunidad](media/web-comunidad.jpg)
 
-### La plataforma
+#### Los eventos
 
-La casa de los socios. Empezó como una comunidad prestada en WhatsApp y hoy es una aplicación propia donde vive todo: la conversación, las sesiones, las herramientas que cada negocio tiene contratadas y la relación con el equipo.
+Nos vemos en persona. Cada evento se publica desde un único fichero de contenido tipado: si a una ficha le falta la fecha, qué incluye, qué no incluye o las membresías que la incluyen, la web no compila. El viaje y los traslados nunca van incluidos, y las plazas nunca se sortean.
 
-![La comunidad por dentro](media/app-comunidad.jpg)
+![Sección de eventos](media/web-eventos.jpg)
 
-**La comunidad, por dentro.** La conversación está repartida en tres canales —los avisos del equipo, la mesa donde se habla y los eventos— y dentro de cada uno hay publicaciones, personas y mensajes directos. Se puede publicar con imágenes y archivos, responder en hilos de hasta tres niveles, reaccionar y seguir a alguien. Lo que en un grupo de WhatsApp se pierde a los dos días, aquí se queda donde se puede encontrar.
+#### La Sole Hand App
 
-| Un hilo abierto | La portada de cada socio |
-| --- | --- |
-| ![Una publicación con sus respuestas](media/app-hilo.jpg) | ![La portada, con lo que toca atender](media/app-portada.jpg) |
+La casa de las herramientas y de los eventos. Dentro viven las herramientas de inteligencia artificial propias, que nacen de los problemas que los socios ponen sobre la mesa y van dentro de la cuota; la reserva de plazas en los eventos; la cuenta de cada socio y, para quien recomienda, su portal de afiliado. Ninguna herramienta es el producto: la comunidad lo es.
 
-**La portada** no es un panel de métricas: es lo que hay que atender hoy. Arriba, una cifra que resume el mes; debajo, lo que está esperando a esa persona en concreto. Cada socio ve su propia actividad y solo la suya.
+![Sección de la app](media/web-app.jpg)
 
-**Las herramientas** se contratan una a una y cada negocio ve las que tiene. Junto a ellas está el laboratorio: lo que se está construyendo ahora mismo, en qué fase va y quién lo pidió. Es la regla del proyecto puesta a la vista, porque cada herramienta sale del problema que alguien contó en la mesa.
+| La portada de cada socio | Las herramientas y el laboratorio | En el móvil |
+| --- | --- | --- |
+| ![La portada](media/app-portada.jpg) | ![Las herramientas](media/app-herramientas.jpg) | ![La app en el móvil](media/app-movil.jpg) |
 
-![Las herramientas y el laboratorio](media/app-herramientas.jpg)
+Por dentro es un backend propio en un servidor europeo: cada dato está protegido por políticas a nivel de fila, de modo que la separación entre lo que puede ver un socio y lo que no la decide la base de datos y no la pantalla. Cada cobro genera su factura; el consentimiento de las condiciones se guarda con su versión íntegra, la fecha y la dirección desde la que se aceptó; y una cuenta se puede borrar de verdad.
 
-Está pensada para el teléfono, que es desde donde se usa de verdad, y se guarda en la pantalla de inicio como una aplicación más sin pasar por ninguna tienda.
+#### Sole Hand Skills
 
-![La plataforma en el móvil](media/app-movil.jpg)
+El programa de seis meses para quien empieza: grupo pequeño, sesión de grupo semanal, mastermind y reunión a solas cada mes, las herramientas de la app y los eventos del semestre. Con fecha de inicio y de fin, sin permanencia y con una garantía de resultados que se revisa a los 90 días con un comité de socios y un founder.
 
-Por dentro es un backend propio en un servidor europeo: cada dato está protegido por políticas a nivel de fila, de modo que la separación entre lo que puede ver un socio y lo que no la decide la base de datos y no la pantalla. El consentimiento de las condiciones se guarda con su versión íntegra, la fecha y la dirección desde la que se aceptó, y una cuenta se puede borrar de verdad: se retira todo lo personal y lo que esa persona escribió en la comunidad se queda sin su nombre, para no dejar a medias las conversaciones de los demás.
+![Página del programa](media/web-skills.jpg)
 
-### La web
+#### Recomienda y cobra
 
-Bilingüe español / inglés: cada idioma tiene su URL propia, generada en build con su título, sus metadatos y sus datos estructurados, y las dos versiones se declaran mutuamente con hreflang. Diseño propio sobre una dirección de arte de mármol y cromo, con animación medida y una regla de copy que se aplica a todo el proyecto: lo tiene que entender un niño de 5 años y un abuelo de 80.
+Recomendar es gratis, no exige ser socio y se cobra solo por membresías que se pagan y se usan. Las reglas están escritas y a la vista, y hay un aviso claro: lo que se cobra depende de a quién se traiga y de que se quede.
+
+![Página de recomendar](media/web-afiliados.jpg)
+
+#### La web
+
+Trilingüe: español, inglés y una variante para México, cada una con su URL, sus metadatos y sus datos estructurados generados en build. Prerrenderizada entera para que los rastreadores que no ejecutan JavaScript la lean. Y con guardas que rompen el build si el copy contradice la marca, si un precio no cuadra con lo que cobra la app o si un color baja del contraste mínimo.
 
 | Móvil | Inglés | La página /hablamos |
 | --- | --- | --- |
 | ![Versión móvil](media/web-movil.jpg) | ![Home en inglés](media/web-en.jpg) | ![Formulario de contacto](media/web-hablamos.jpg) |
 
-## Estado del proyecto
+### Estado del proyecto
 
-Actualizado a 24 de agosto de 2026.
+Actualizado a 8 de septiembre de 2026.
 
-| Módulo | Estado | Progreso |
-| --- | --- | --- |
-| Web pública bilingüe | En producción en solehand.com | `█████████░` 92 % |
-| Plataforma de socios | En producción, con alta abierta | `████████░░` 80 % |
-| Servicio de captación de leads | En producción | `█████████░` 88 % |
-| Comunidad | Abierta, se entra sin esperar | `████████░░` 80 % |
-| Agente de voz v1 | En piloto | `██████░░░░` 55 % |
-| Contenido y marca en redes | En curso | `██████░░░░` 65 % |
-| Portal de afiliados | En producción, primera versión | `█████░░░░░` 50 % |
-| Cobro con tarjeta | Lo siguiente | `█░░░░░░░░░` 10 % |
-| Confirmación de citas | En diseño | `█░░░░░░░░░` 10 % |
-| Recursos gratuitos | Carpeta abierta, primeros en preparación | `█░░░░░░░░░` 5 % |
+| Módulo | Estado |
+| --- | --- |
+| Web pública trilingüe | Remodelada para la comunidad de emprendedores; pendiente de revisión legal antes de publicar |
+| Sole Hand App | En producción; en migración: la conversación pasa a WhatsApp y entran los eventos, el programa y las comisiones por niveles |
+| Comunidad | Abierta, con alta directa |
+| Eventos | Fichas y reserva desde la app en construcción |
+| Sole Hand Skills | Programa definido; el cobro se despliega con la app |
+| Recomienda y cobra | Primera versión en producción; segundo nivel en construcción |
+| Herramientas de IA | La primera (un asistente que contesta el teléfono) en piloto; catálogo vivo |
+| Cobro con tarjeta y factura por cobro | En producción |
 
 La bitácora completa, con los hitos fechados, está en [docs/bitacora.md](docs/bitacora.md).
 
-## Cómo está hecho
+### Cómo está hecho
 
 Resumen rápido; el detalle está en [docs/arquitectura.md](docs/arquitectura.md).
 
-- **Frontend:** React 18 + Vite + TypeScript, Tailwind CSS 4 y GSAP para el movimiento. Sin router: la web es una pieza única con anclas, y en build se genera una URL propia por idioma con sus metadatos y su hreflang.
-- **Plataforma:** React 18 + Vite + TypeScript, Tailwind CSS 4 y react-router, contra un backend propio autoalojado en Europa (PostgreSQL con políticas por fila, autenticación y funciones en el borde). Aplicación web instalable, con su propio service worker. Bilingüe como la web, y un sistema de diseño con contratos que se verifican solos en cada build: los contrastes se recalculan, los tamaños y los colores salen de una escala única y las capturas de las pantallas se revisan enteras antes de cada despliegue.
-- **Leads:** servicio propio en Node, separado de la web, que recibe el formulario, avisa al equipo y responde al interesado. Sin plataformas de marketing por medio: los detalles del interesado viajan solo por el correo de la empresa.
-- **Infraestructura:** contenedores Docker detrás de nginx en un VPS propio, con cabeceras de seguridad configuradas a mano y HTML sin caché para que los cambios se vean al instante.
-- **Cumplimiento desde el diseño:** el agente se presenta como asistente virtual al descolgar, como exige el artículo 50 del Reglamento Europeo de IA, y está diseñado para que los datos se procesen en infraestructura europea. La web no usa cookies de rastreo.
+- **Web:** React 18 + Vite + TypeScript, Tailwind CSS 4 y GSAP para el movimiento. Sin router: enrutado por expresiones regulares y una URL propia por idioma generada en build, con hreflang y sitemap. Prerrender con Playwright y cuatro auditorías en cada build (copy, precios, contraste y locale).
+- **Sole Hand App:** React 18 + Vite + TypeScript, Tailwind CSS 4 y react-router, contra un backend propio autoalojado en Europa (PostgreSQL con políticas por fila, autenticación, funciones en el borde). Aplicación web instalable. Cobro con tarjeta y factura automática por cada cobro.
+- **Leads:** servicio propio en Node, separado de la web, que recibe el formulario, avisa al equipo y responde al interesado.
+- **Infraestructura:** contenedores Docker detrás de nginx en un VPS propio, con cabeceras de seguridad configuradas a mano y HTML sin caché.
+- **Cumplimiento desde el diseño:** las herramientas se presentan como asistentes, como exige el artículo 50 del Reglamento Europeo de IA; los datos se procesan en infraestructura europea; la web no usa cookies de rastreo; 14 días de desistimiento y baja en un clic.
 
-## Dirección de arte
+### Dirección de arte
 
-Toda la marca vive en un mismo mundo: mármol de Carrara, cromo y negro. El símbolo es un enso, un círculo abierto: la inteligencia artificial hace el trabajo y una mano humana, la última, decide. Las piezas para redes se componen con un sistema propio que garantiza que cada publicación sale del mismo molde.
+Negro, blanco y una rampa de seis verdes: un tono, varios valores. El símbolo es un enso, un círculo abierto: la inteligencia artificial hace el trabajo y una mano humana, la última, decide. La fotografía de mármol de la primera etapa sigue en la web hasta que entren las fotos reales de los eventos.
 
 ![Portadas de la serie para redes](media/social-portadas.jpg)
 
-## Recursos gratuitos
+### Recursos gratuitos
 
-En [recursos/](recursos/) irán las guías, plantillas y pequeñas herramientas que el proyecto libere gratis. La regla es la de siempre: solo se publica lo que ya se ha usado de verdad por dentro. De momento la carpeta está recién abierta y lo dice tal cual.
+En [recursos/](recursos/) irán las guías, plantillas y pequeñas herramientas que el proyecto libere gratis. La regla es la de siempre: solo se publica lo que ya se ha usado de verdad por dentro.
 
-## Contacto
+### Contacto
 
 El proyecto se puede ver funcionando en [solehand.com](https://solehand.com). Para hablar del proyecto, el formulario de [solehand.com/hablamos](https://solehand.com/hablamos).
 
 ---
 
-© 2026 Daniel Brosed. Este repositorio es material de portfolio; el código de producción no es público.
+## English
+
+Sole Hand is a community of entrepreneurs: people who already run a business and people who want to start one. We meet in person, we use our own artificial intelligence tools inside the Sole Hand App, and whoever recommends the community gets paid for it.
+
+This repository is the project's public showcase: what is being built, where it stands and how it is made, at architecture level. Production code lives in private repositories. There are no prices here: they live on the website, where they are audited.
+
+### What is built
+
+- **The community.** People with a running business and people building their first one, in the same place. The conversation lives in WhatsApp groups by sector; meetups are included in every membership; events and retreats come with their own card (when, where, what is included, what is not, and which memberships include the ticket) and seats are booked from the app on a first-come basis.
+- **The events.** We meet in person. Every event is published from a single typed content file: if a card is missing its date, what is included, what is not or the memberships that include it, the site does not compile. Travel is never included and seats are never raffled.
+- **The Sole Hand App.** The home of the tools and the events: our own AI tools (born from the problems members put on the table and included in the fee), event bookings, each member's account and, for those who recommend, their affiliate portal. No tool is the product: the community is.
+- **Sole Hand Skills.** The six-month programme for people starting out: a small group, a weekly session, a monthly mastermind and one-to-one, the app's tools and the semester's events. Start and end dates, no lock-in, and a results guarantee reviewed at 90 days by a committee of members and a founder.
+- **Recommend and earn.** Recommending is free, does not require membership and pays only on memberships that are paid for and used. The rules are written and visible, with a plain warning: what you earn depends on who you bring and on whether they stay.
+- **The website.** Spanish, English and a Mexican variant, each with its own URL, metadata and structured data generated at build time. Fully prerendered so crawlers that do not run JavaScript can read it, with build guards that fail if the copy contradicts the brand, a price does not match what the app charges, or a colour drops below the minimum contrast.
+
+### How it is made
+
+- **Website:** React 18 + Vite + TypeScript, Tailwind CSS 4 and GSAP. No router library: regex routing and one URL per language generated at build, with hreflang and sitemap. Playwright prerender and four audits on every build (copy, prices, contrast and locale).
+- **Sole Hand App:** React 18 + Vite + TypeScript, Tailwind CSS 4 and react-router, against a self-hosted backend in Europe (PostgreSQL with row-level policies, auth, edge functions). Installable web app. Card payments with an automatic invoice per charge.
+- **Leads:** a small Node service, separate from the site, that receives the form, alerts the team and replies to the person.
+- **Infrastructure:** Docker containers behind nginx on our own VPS, hand-configured security headers and uncached HTML.
+- **Compliance by design:** the tools introduce themselves as assistants, as Article 50 of the EU AI Act requires; data is processed on European infrastructure; the site uses no tracking cookies; 14-day withdrawal and one-click cancellation.
+
+### Art direction
+
+Black, white and a ramp of six greens: one hue, several values. The symbol is an enso, an open circle: artificial intelligence does the work and a human hand, the last one, decides.
+
+### Contact
+
+See it running at [solehand.com](https://solehand.com). To talk about the project, the form at [solehand.com/hablamos](https://solehand.com/hablamos).
+
+---
+
+© 2026 Daniel Brosed. Este repositorio es material de portfolio; el código de producción no es público. / This repository is portfolio material; production code is not public.

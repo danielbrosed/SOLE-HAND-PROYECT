@@ -2,6 +2,10 @@
 
 Los hitos del proyecto, con sus fechas. Se actualiza a medida que avanza.
 
+## Septiembre de 2026
+
+**8 de septiembre.** El proyecto se redefine: Sole Hand pasa a contarse como una comunidad de emprendedores que se ve en persona, con las herramientas de inteligencia artificial dentro de la Sole Hand App, un programa de seis meses para quien empieza (Sole Hand Skills) y un programa de recomendación con reglas a la vista. La web se remodela entera en tres idiomas, con paleta nueva (negro, blanco y verdes), páginas de eventos y del programa, y guardas de build que vigilan el copy, los precios y el contraste. La conversación de la comunidad vuelve a WhatsApp; la app conserva las herramientas, los eventos, la cuenta y el portal de afiliados.
+
 ## Agosto de 2026
 
 **24 de agosto.** El alta deja de tener cola: quien llega se registra y entra, como socio o como afiliado, sin solicitud que nadie tenga que aprobar. La comunidad se vacía de los datos de demostración y queda lista para la gente de verdad.
