@@ -4,7 +4,19 @@ Los hitos del proyecto, con sus fechas. Se actualiza a medida que avanza.
 
 ## Septiembre de 2026
 
-**8 de septiembre.** El proyecto se redefine: Sole Hand pasa a contarse como una comunidad de emprendedores que se ve en persona, con las herramientas de inteligencia artificial dentro de la Sole Hand App, un programa de seis meses para quien empieza (Sole Hand Skills) y un programa de recomendación con reglas a la vista. La web se remodela entera en tres idiomas, con paleta nueva (negro, blanco y verdes), páginas de eventos y del programa, y guardas de build que vigilan el copy, los precios y el contraste. La conversación de la comunidad vuelve a WhatsApp; la app conserva las herramientas, los eventos, la cuenta y el portal de afiliados.
+**20 al 25 de septiembre.** El feed se rehace con piezas que enseñan algo aunque no se entre: dos carruseles (lo que cuesta emprender en solitario y las preguntas que hay que hacerse antes de pagarle a nadie por inteligencia artificial) y dos piezas sueltas. El sistema de composición se generaliza: cada post es un guion en JSON con la fuente de cada dato, un validador rechaza el texto que contradiga la marca o un importe escrito a mano, y las láminas se rinden con el navegador a tamaño nativo.
+
+**16 y 17 de septiembre.** Segunda pieza del taller de vídeo: una entrevista grabada en un congreso, montada con reencuadres por hablante, subtítulos que se colocan bajo quien habla y rótulos con nombre y cargo. La cadena se vuelve repetible: cambiar el bruto y el guion, y correr los pasos en orden.
+
+**15 de septiembre.** El programa de seis meses pasa a llamarse **Sole Hand Scale**. El cambio recorre la web entera en los tres idiomas: rutas, metadatos, datos estructurados, condiciones y traducciones.
+
+**11 de septiembre.** Se publica el precio del programa, que hasta entonces se hablaba en la reunión, y se estrena el taller de vídeo: transcripción local, capa gráfica animada renderizada desde HTML y composición final que respeta el metraje original tal y como salió de la cámara.
+
+**10 de septiembre.** La web se mide en el móvil con un guion propio que abre un teléfono emulado y calcula cuánto negro puro hay en cada pantalla. Con los números delante entran los halos verdes y los ajustes que solo afectan a las pantallas pequeñas: el escritorio no se toca.
+
+**9 de septiembre.** Entra el logotipo nuevo (un escudo con una mano abierta y las letras S y H en el trazo) y con él una estética de club mediterráneo: crema en vez de blanco, grano de película y fotografía propia. Se publica el manual de marca en solehand.com/marca, generado desde los mismos tokens que pinta la web. Los eventos pasados estrenan sus grabaciones reales.
+
+**8 de septiembre.** El proyecto se redefine: Sole Hand pasa a contarse como una comunidad de emprendedores que se ve en persona, con las herramientas de inteligencia artificial dentro de la Sole Hand App, un programa de seis meses para quien empieza (hoy Sole Hand Scale) y un programa de recomendación con reglas a la vista. La web se remodela entera en tres idiomas, con paleta nueva (negro, blanco y verdes), páginas de eventos y del programa, y guardas de build que vigilan el copy, los precios y el contraste. La conversación de la comunidad vuelve a WhatsApp; la app conserva las herramientas, los eventos, la cuenta y el portal de afiliados.
 
 ## Agosto de 2026
 
@@ -30,4 +42,4 @@ Los hitos del proyecto, con sus fechas. Se actualiza a medida que avanza.
 
 ## Julio de 2026
 
-**Última semana de julio.** Nace la colección de fotografía de marca (mármol de Carrara, cromo y negro) y el círculo abierto que hoy es el símbolo del proyecto. Curiosamente nacieron para otra idea anterior que se descartó; la identidad era tan sólida que sobrevivió al pivote y se convirtió en Sole Hand. De esa colección salen la web, las redes y todo lo que vendrá.
+**Última semana de julio.** Nace la colección de fotografía de marca (mármol de Carrara, cromo y negro) y el círculo abierto que fue el primer símbolo del proyecto. Curiosamente nacieron para otra idea anterior que se descartó, y sobrevivieron al pivote. De esa colección salieron la web y las redes de la primera etapa, hasta que en septiembre de 2026 entró la identidad actual.
