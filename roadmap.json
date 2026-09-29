@@ -1,0 +1,71 @@
+{
+  "$comment": "Single source of truth for the progress card and the README progress, security and roadmap sections. Edit, then run: node tools/progress.mjs",
+  "product": "Sole Hand",
+  "updated": "2026-09-29",
+  "release": {
+    "label": "Web and app",
+    "status": "live",
+    "site": "solehand.com",
+    "since": "2026-08-17",
+    "next": "memberships open"
+  },
+  "modules": [
+    { "name": "Website in three locales", "status": "live", "detail": "solehand.com in Spanish, English and a Mexican variant, prerendered, with build guards on copy, prices and contrast." },
+    { "name": "Public brand manual", "status": "live", "detail": "solehand.com/marca, generated from the same design tokens the website paints with." },
+    { "name": "Lead service", "status": "live", "detail": "The contact form lands in its own Node service, separate from the website." },
+    { "name": "Accounts and sign-up", "status": "live", "detail": "Open sign-up as a member or as someone who recommends, confirmed through the inbox." },
+    { "name": "Member directory", "status": "live", "detail": "People and businesses of the community, with visibility decided by the database." },
+    { "name": "Events and seat booking", "status": "live", "detail": "Event cards and first-come seat booking from the Sole Hand App." },
+    { "name": "Sole Hand Scale area", "status": "live", "detail": "Programme panel and sessions for people in the six-month programme." },
+    { "name": "Recommend-and-earn portal", "status": "live", "detail": "Link, QR code, materials, referrals and commissions for people who recommend the community." },
+    { "name": "Admin panel", "status": "live", "detail": "Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure." },
+    { "name": "Content pipeline", "status": "live", "detail": "Social images and video rendered from HTML with the brand's own fonts and tokens." },
+    { "name": "Card payments", "status": "built", "detail": "Checkout, customer portal, 14-day withdrawal and payouts, built and tested end to end in Stripe's test mode. Switched on when the security programme closes." },
+    { "name": "Tailored AI tools", "status": "planned", "detail": "Built inside Sole Hand Scale for each business, starting from the problem it brings." }
+  ],
+  "metrics": [
+    {
+      "id": "modules",
+      "label": "Product modules live",
+      "fromModules": true,
+      "unit": "modules",
+      "note": "Modules planned for opening that already run in production. The full list is in the README."
+    },
+    {
+      "id": "security",
+      "label": "Security hardening programme",
+      "done": 5,
+      "total": 6,
+      "unit": "phases",
+      "segmented": true,
+      "segments": ["Perimeter and backups", "Secrets", "Payments", "Identity and access", "Data, files, GDPR", "Supply chain"],
+      "note": "Phases 1 to 5 deployed in production; phase 6 rolling out."
+    }
+  ],
+  "phases": [
+    { "title": "Perimeter and backups", "status": "done", "detail": "Admin consoles off the public internet, a second factor on every operator account, encrypted off-site backups with a restore tested row by row, and access logging at the proxy." },
+    { "title": "Secrets", "status": "done", "detail": "Every key rotated, an encrypted secrets manager as the only source, nothing exported in clear, and SSH closed to the internet and key-only." },
+    { "title": "Payments", "status": "done", "detail": "Signed webhooks that apply the state Stripe holds now, a pinned API version with timeouts, one subscription per business, withdrawal receipts and a watchdog that emails the team when anything about money goes wrong." },
+    { "title": "Identity and access", "status": "done", "detail": "No session before the email is confirmed, suspension that cuts sessions across API, storage and functions, rate limits at the proxy, CORS locked to the app and a TOTP second factor for administrators." },
+    { "title": "Data, files and GDPR", "status": "done", "detail": "An immutable, minimised audit trail, private file storage with quotas and short-lived links, full GDPR erasure and retention periods purged every night." },
+    { "title": "Supply chain and staging", "status": "active", "detail": "CI on every push with actions pinned by SHA and secret scanning, deployments gated on green CI, a separate staging stack, images pinned by digest and event-booking hardening." }
+  ],
+  "stats": [
+    { "value": "90", "label": "SQL migrations" },
+    { "value": "27", "label": "edge functions" },
+    { "value": "59", "label": "app screens" },
+    { "value": "54k", "label": "lines of TypeScript" },
+    { "value": "469", "label": "security tests" },
+    { "value": "806", "label": "database rehearsal checks" },
+    { "value": "36", "label": "prerendered routes" },
+    { "value": "3", "label": "web locales" }
+  ],
+  "milestones": [
+    { "date": "2026-08", "title": "Website live", "status": "done", "detail": "solehand.com live in Spanish and English on 17 August: a static React build in Docker behind nginx with hand-set security headers, and a separate lead service for the contact form." },
+    { "date": "2026-08", "title": "Sole Hand App", "status": "done", "detail": "Self-hosted Supabase backend with row-level security, accounts with open sign-up, member directory, events, the recommend-and-earn portal and the admin panel." },
+    { "date": "2026-09", "title": "Relaunch · community", "status": "done", "detail": "Sole Hand redefined as a community of entrepreneurs: new identity and public brand manual, a Mexican variant of the site, event and Sole Hand Scale pages, build guards and the content pipeline." },
+    { "date": "2026-09", "title": "Security · phases 1 to 5", "status": "done", "detail": "Full security audit of the platform, turned into a six-phase programme. Deployed: perimeter and backups, secrets, payments, identity and access, data, files and GDPR." },
+    { "date": "next", "title": "Phase 6", "status": "active", "detail": "Supply chain and staging: CI with pinned actions and secret scanning, a separate staging stack, images pinned by digest and event-booking hardening." },
+    { "date": "later", "title": "Memberships open", "status": "planned", "detail": "Card payments switched on once the programme closes, and the first AI tools built inside Sole Hand Scale for each business." }
+  ]
+}
