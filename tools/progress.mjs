@@ -157,7 +157,7 @@ function svg(W, H, t, id, body, title) {
 // ---- README sections -----------------------------------------------------------
 function progressMd() {
   const rows = metrics.map(m => `| ${m.label} | ${m.done} / ${m.total} ${m.unit} | **${pct(m)}%** |`).join('\n');
-  const label = { live: 'Live', built: 'Built, not switched on', planned: 'Planned' };
+  const label = { live: 'Live', built: 'Built, not switched on', building: 'In progress', planned: 'Planned' };
   const mods = data.modules.map(m => `| ${m.name} | ${label[m.status]} | ${m.detail} |`).join('\n');
   const first = metrics.find(m => m.fromModules);
   return `_Last updated ${fmtDay(data.updated)} · ${data.release.site} live since ${fmtDay(data.release.since)}._\n\n| Track | Progress | |\n|---|---|---|\n${rows}\n\n` +

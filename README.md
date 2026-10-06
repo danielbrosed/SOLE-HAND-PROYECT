@@ -40,7 +40,7 @@ I designed and built all of it from scratch as a full-stack developer: the websi
 </picture>
 
 <!-- progress:start -->
-_Last updated 29 Sep 2026 · solehand.com live since 17 Aug 2026._
+_Last updated 6 Oct 2026 · solehand.com live since 17 Aug 2026._
 
 | Track | Progress | |
 |---|---|---|
@@ -63,7 +63,7 @@ _Last updated 29 Sep 2026 · solehand.com live since 17 Aug 2026._
 | Admin panel | Live | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure. |
 | Content pipeline | Live | Social images and video rendered from HTML with the brand's own fonts and tokens. |
 | Card payments | Built, not switched on | Checkout, customer portal, 14-day withdrawal and payouts, built and tested end to end in Stripe's test mode. Switched on when the security programme closes. |
-| Tailored AI tools | Planned | Built inside Sole Hand Scale for each business, starting from the problem it brings. |
+| AI agents | In progress | Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Included with Sole Hand Scale. Database, staging and the four-step onboarding are built; the agent service is next. |
 
 </details>
 <!-- progress:end -->
@@ -81,6 +81,7 @@ The card and the tables in this README come from [`roadmap.json`](roadmap.json).
 | Recommend and earn | Recommending is free, needs no membership and pays only on memberships that are paid for and used. The rules are written down and visible. |
 | Website | Spanish, English and a Mexican variant, each with its own URL, metadata and structured data generated at build time, fully prerendered for crawlers that do not run JavaScript. |
 | Admin | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure, behind the same database rules as everything else. |
+| AI agents | Four agents for the owner of each business (follow-up, priorities, replies and reports). They read the email the business forwards to them, talk to the owner over Telegram and wait for approval before anything goes out. Included with Sole Hand Scale; in progress. |
 
 ## Screenshots
 
@@ -122,10 +123,10 @@ The social pieces come out of a composition system of my own. The text of each p
 |---|---|
 | Website | React 18, Vite 8 and TypeScript, Tailwind CSS 4, GSAP and Lenis for motion. No router library: regex routing and one URL per locale generated at build time |
 | Prerender and SEO | Playwright renders 36 routes to static HTML at build time, with canonical, hreflang, sitemap and JSON-LD per locale |
-| App | React 18, React Router 7, Vite 8, TypeScript in strict mode and Tailwind CSS 4, shipped as an installable web app with 59 screens |
+| App | React 18, React Router 7, Vite 8, TypeScript in strict mode and Tailwind CSS 4, shipped as an installable web app with 70 screens |
 | Backend | Self-hosted Supabase in Europe: PostgreSQL 17 with row-level security, auth, file storage and an API gateway |
-| Data | 90 SQL migrations, each one rehearsed in an in-memory PostgreSQL (PGlite) before it reaches production; most recent ones ship with an undo script |
-| Server logic | 27 edge functions in TypeScript on Deno, with their client library pinned to an exact version |
+| Data | 95 SQL migrations, each one rehearsed in an in-memory PostgreSQL (PGlite) before it reaches production; most recent ones ship with an undo script |
+| Server logic | 28 edge functions in TypeScript on Deno, with their client library pinned to an exact version |
 | Payments | Stripe Checkout, customer portal and signed webhooks, and Stripe Connect for payouts to people who recommend |
 | Leads | A small Node 24 service with Nodemailer, in its own container |
 | Delivery | Docker images pinned by digest, a reverse proxy with rate limits in front, and nginx serving the static builds |
@@ -138,13 +139,13 @@ The social pieces come out of a composition system of my own. The text of each p
 flowchart TB
     U["Visitors, members and admins"] --> RP["Reverse proxy · TLS, rate limits"]
     RP --> WEB["Website<br/>nginx, 36 prerendered routes"]
-    RP --> APP["Sole Hand App<br/>nginx, React PWA, 59 screens"]
+    RP --> APP["Sole Hand App<br/>nginx, React PWA, 70 screens"]
     RP --> GW["API gateway<br/>CORS for the app only"]
     RP --> LEADS["Lead service<br/>Node"]
     subgraph BACK["Self-hosted Supabase"]
         GW --> AUTH["Auth<br/>email confirmation, TOTP"]
         GW --> REST["REST over PostgreSQL"]
-        GW --> FN["Edge functions<br/>27, Deno"]
+        GW --> FN["Edge functions<br/>28, Deno"]
         GW --> ST[("File storage<br/>private, with quotas")]
         AUTH & REST & FN --> DB[("PostgreSQL 17<br/>row-level security")]
     end
@@ -159,7 +160,7 @@ A few decisions explain most of the code. The long version is in [docs/architect
 
 The database is the only authority. Row-level policies decide what a member can read, what the team can read and what nobody can read, in the engine and not in the code that paints the screen. A badly written screen can show too little; it cannot show too much. Operations that need privilege run in edge functions, and the key that carries that privilege never reaches the browser.
 
-Migrations are rehearsed before production sees them. Every migration runs first against a PostgreSQL 17 that lives inside the test process, with a Supabase scaffold on top, and recent ones carry a behaviour test for their policies, grants and edge cases: 806 checks today, and the CI pipeline runs them all.
+Migrations are rehearsed before production sees them. Every migration runs first against a PostgreSQL 17 that lives inside the test process, with a Supabase scaffold on top, and recent ones carry a behaviour test for their policies, grants and edge cases: 931 checks today, and the CI pipeline runs them all.
 
 Payments follow Stripe, not the event. The webhook applies the state Stripe holds at that moment instead of the payload it received, so retries and out-of-order deliveries end in the same place. Before opening a checkout the backend asks Stripe whether that business already has a subscription.
 
@@ -205,8 +206,8 @@ The production source stays private. It is a live system with personal and payme
 
 ## Quality
 
-- **Security suite.** 469 tests with `node:test` over the function contracts, checkout, webhooks and their signatures, authorisation, sign-up, GDPR, the audit trail, events, secrets handling, CI and the guards on production scripts.
-- **Database rehearsal.** Every migration and its behaviour tests run against an in-memory PostgreSQL 17: 806 passing checks, and the CI pipeline runs the whole rehearsal.
+- **Security suite.** 636 tests with `node:test` over the function contracts, checkout, webhooks and their signatures, authorisation, sign-up, GDPR, the audit trail, events, secrets handling, CI and the guards on production scripts.
+- **Database rehearsal.** Every migration and its behaviour tests run against an in-memory PostgreSQL 17: 931 passing checks, and the CI pipeline runs the whole rehearsal.
 - **End to end.** Batteries for the access matrix, sign-up over the internet, Stripe webhooks in test mode, GDPR erasure, file storage, rate limits and concurrent seat booking.
 - **Build guards.** The website runs its four audits, the prerender and a locale test on every build. The app runs style, contrast, price and translation checks, email previews and a strict mobile audit that walks every screen in a real browser looking for overflow, console errors and touch targets too small for a finger.
 - **Types.** TypeScript in strict mode and oxlint across both front ends.
@@ -220,6 +221,7 @@ The production source stays private. It is a live system with personal and payme
 | Aug 2026 | Sole Hand App | Done | Self-hosted Supabase backend with row-level security, accounts with open sign-up, member directory, events, the recommend-and-earn portal and the admin panel. |
 | Sep 2026 | Relaunch · community | Done | Sole Hand redefined as a community of entrepreneurs: new identity and public brand manual, a Mexican variant of the site, event and Sole Hand Scale pages, build guards and the content pipeline. |
 | Sep 2026 | Security · phases 1 to 5 | Done | Full security audit of the platform, turned into a six-phase programme. Deployed: perimeter and backups, secrets, payments, identity and access, data, files and GDPR. |
+| Oct 2026 | AI agents | In progress | A separate agent service with its own database role, so every business is isolated by row-level security inside the database itself; a credit ledger that cannot go negative; the owner's consent signed on the server; a staging stack to measure it all; and the onboarding in the app. The Telegram service comes next. |
 | Next | Phase 6 | In progress | Supply chain and staging: CI with pinned actions and secret scanning, a separate staging stack, images pinned by digest and event-booking hardening. |
 | Later | Memberships open | Planned | Card payments switched on once the programme closes, and the first AI tools built inside Sole Hand Scale for each business. |
 <!-- roadmap:end -->

@@ -1,7 +1,7 @@
 {
   "$comment": "Single source of truth for the progress card and the README progress, security and roadmap sections. Edit, then run: node tools/progress.mjs",
   "product": "Sole Hand",
-  "updated": "2026-09-29",
+  "updated": "2026-10-06",
   "release": {
     "label": "Web and app",
     "status": "live",
@@ -21,7 +21,7 @@
     { "name": "Admin panel", "status": "live", "detail": "Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure." },
     { "name": "Content pipeline", "status": "live", "detail": "Social images and video rendered from HTML with the brand's own fonts and tokens." },
     { "name": "Card payments", "status": "built", "detail": "Checkout, customer portal, 14-day withdrawal and payouts, built and tested end to end in Stripe's test mode. Switched on when the security programme closes." },
-    { "name": "Tailored AI tools", "status": "planned", "detail": "Built inside Sole Hand Scale for each business, starting from the problem it brings." }
+    { "name": "AI agents", "status": "building", "detail": "Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Included with Sole Hand Scale. Database, staging and the four-step onboarding are built; the agent service is next." }
   ],
   "metrics": [
     {
@@ -51,12 +51,12 @@
     { "title": "Supply chain and staging", "status": "active", "detail": "CI on every push with actions pinned by SHA and secret scanning, deployments gated on green CI, a separate staging stack, images pinned by digest and event-booking hardening." }
   ],
   "stats": [
-    { "value": "90", "label": "SQL migrations" },
-    { "value": "27", "label": "edge functions" },
-    { "value": "59", "label": "app screens" },
-    { "value": "54k", "label": "lines of TypeScript" },
-    { "value": "469", "label": "security tests" },
-    { "value": "806", "label": "database rehearsal checks" },
+    { "value": "95", "label": "SQL migrations" },
+    { "value": "28", "label": "edge functions" },
+    { "value": "70", "label": "app screens" },
+    { "value": "69k", "label": "lines of TypeScript" },
+    { "value": "636", "label": "security tests" },
+    { "value": "931", "label": "database rehearsal checks" },
     { "value": "36", "label": "prerendered routes" },
     { "value": "3", "label": "web locales" }
   ],
@@ -65,6 +65,7 @@
     { "date": "2026-08", "title": "Sole Hand App", "status": "done", "detail": "Self-hosted Supabase backend with row-level security, accounts with open sign-up, member directory, events, the recommend-and-earn portal and the admin panel." },
     { "date": "2026-09", "title": "Relaunch · community", "status": "done", "detail": "Sole Hand redefined as a community of entrepreneurs: new identity and public brand manual, a Mexican variant of the site, event and Sole Hand Scale pages, build guards and the content pipeline." },
     { "date": "2026-09", "title": "Security · phases 1 to 5", "status": "done", "detail": "Full security audit of the platform, turned into a six-phase programme. Deployed: perimeter and backups, secrets, payments, identity and access, data, files and GDPR." },
+    { "date": "2026-10", "title": "AI agents", "status": "active", "detail": "A separate agent service with its own database role, so every business is isolated by row-level security inside the database itself; a credit ledger that cannot go negative; the owner's consent signed on the server; a staging stack to measure it all; and the onboarding in the app. The Telegram service comes next." },
     { "date": "next", "title": "Phase 6", "status": "active", "detail": "Supply chain and staging: CI with pinned actions and secret scanning, a separate staging stack, images pinned by digest and event-booking hardening." },
     { "date": "later", "title": "Memberships open", "status": "planned", "detail": "Card payments switched on once the programme closes, and the first AI tools built inside Sole Hand Scale for each business." }
   ]

@@ -2,6 +2,14 @@
 
 The project's milestones, with their dates. Updated as the build moves. The summary table is in the [README](../README.md#roadmap).
 
+## October 2026
+
+**6 October.** The AI agents get their foundations and their front door in a single day. Underneath: the agents run as a separate service that enters the same PostgreSQL with a role of its own, so the database itself keeps each business apart (forced row-level security on every table, and with no business pinned to the session the service sees nothing at all); the job queue lives inside Postgres; credits are a ledger that never goes below zero, with reservations that expire and are returned; and the owner's consent to the data-processing agreement is signed on the server, with the server's own copy of the text and the IP address it came from, never with what the browser sends. The migration was rehearsed against an in-memory PostgreSQL and then measured on a separate staging stack, where it turned up what the in-memory rehearsal cannot see. Three rounds of adversarial review went over it before the first commit. On top: the agents' screens in the Sole Hand App stop being a mock-up and read from the database, honest about what is not running yet, and a four-step onboarding (your business, where I read from, how much I decide alone, where I talk to you) saves as you go.
+
+**4 and 5 October.** The command centre for the agents is drawn from a finished design and kept local while the plan is written: phases, tests and the order of every production step, with the cost of each agent worked out per customer before a line of it is built.
+
+**30 September.** Four agents are decided for the owner of each business (follow-up, priorities, replies and reports): they read the email the business forwards, talk over Telegram, and in this first version they propose and wait for the owner's approval.
+
 ## September 2026
 
 **Late September.** A full security audit of the platform (code, database, infrastructure and secrets) becomes a six-phase hardening programme: perimeter and backups, secrets, payments, identity and access, data, files and GDPR, and supply chain and staging. Phases 1 to 5 are deployed in production; phase 6 is rolling out. Membership sales open when the programme closes.
