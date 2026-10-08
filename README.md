@@ -39,7 +39,7 @@ I designed and built all of it from scratch as a full-stack developer: the websi
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/progress/progress-dark.svg">
-  <img alt="Build progress: 10 of 12 product modules live (83%); security hardening programme, 5 of 6 phases deployed (83%); milestones from August 2026 to memberships opening" src="docs/progress/progress-light.svg" width="100%">
+  <img alt="Build progress: 12 of 13 product modules live (92%); security hardening programme, 5 of 6 phases deployed (83%); milestones from August 2026 to memberships opening" src="docs/progress/progress-light.svg" width="100%">
 </picture>
 
 <!-- progress:start -->

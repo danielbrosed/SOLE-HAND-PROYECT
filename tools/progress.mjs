@@ -189,6 +189,11 @@ if (fs.existsSync(readmePath)) {
   put('progress', progressMd());
   put('phases', phasesMd());
   put('roadmap', roadmapMd());
+  // The alt text of the full card repeats its figures, so it is rewritten from the same data.
+  const [mods, sec] = metrics;
+  r = r.replace(/(<img alt=")Build progress: [^"]*?(; milestones[^"]*" src="docs\/progress\/progress-light\.svg")/,
+    (_, a, b) => `${a}Build progress: ${mods.done} of ${mods.total} product ${mods.unit} live (${pct(mods)}%); ` +
+      `${sec.label.toLowerCase()}, ${sec.done} of ${sec.total} ${sec.unit} deployed (${pct(sec)}%)${b}`);
   outputs['README.md'] = r;
 }
 
