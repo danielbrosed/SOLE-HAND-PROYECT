@@ -1,27 +1,28 @@
 {
   "$comment": "Single source of truth for the progress card and the README progress, security and roadmap sections. Edit, then run: node tools/progress.mjs",
   "product": "Sole Hand",
-  "updated": "2026-10-06",
+  "updated": "2026-10-08",
   "release": {
     "label": "Web and app",
     "status": "live",
     "site": "solehand.com",
     "since": "2026-08-17",
-    "next": "memberships open"
+    "next": "AI agents"
   },
   "modules": [
     { "name": "Website in three locales", "status": "live", "detail": "solehand.com in Spanish, English and a Mexican variant, prerendered, with build guards on copy, prices and contrast." },
     { "name": "Public brand manual", "status": "live", "detail": "solehand.com/marca, generated from the same design tokens the website paints with." },
     { "name": "Lead service", "status": "live", "detail": "The contact form lands in its own Node service, separate from the website." },
-    { "name": "Accounts and sign-up", "status": "live", "detail": "Open sign-up as a member or as someone who recommends, confirmed through the inbox." },
-    { "name": "Member directory", "status": "live", "detail": "People and businesses of the community, with visibility decided by the database." },
-    { "name": "Events and seat booking", "status": "live", "detail": "Event cards and first-come seat booking from the Sole Hand App." },
-    { "name": "Sole Hand Scale area", "status": "live", "detail": "Programme panel and sessions for people in the six-month programme." },
-    { "name": "Recommend-and-earn portal", "status": "live", "detail": "Link, QR code, materials, referrals and commissions for people who recommend the community." },
+    { "name": "Accounts and sign-up", "status": "live", "detail": "Open sign-up as a member or as someone who recommends, confirmed through the inbox. An account left half done gets up to three reminders (after a day, three days and a week) with a button to the exact screen, and they stop as soon as it is complete." },
+    { "name": "Member directory", "status": "live", "detail": "People and businesses of the community, with visibility decided by the database. Anyone without a business, such as someone who joined to recommend, can create one from the app." },
+    { "name": "Events and seat booking", "status": "live", "detail": "Event cards and first-come seat booking from the Sole Hand App. When the ticket is sold elsewhere, the event page sells it in place through the ticketing platform, and a paid ticket is never booked as a free seat." },
+    { "name": "Sole Hand Scale area", "status": "live", "detail": "Programme panel and sessions for people in the six-month programme. The monthly one-to-one is booked in an embedded calendar and lands in the app already confirmed, with its time, the meeting link, a notification and add-to-calendar." },
+    { "name": "Recommend-and-earn portal", "status": "live", "detail": "Link, QR code, materials, referrals and commissions. Asking to join takes one tap and the team approves with default terms in one click. Four tax profiles, and payouts through Stripe Connect or by bank transfer, with the IBAN encrypted." },
+    { "name": "Notifications", "status": "live", "detail": "In-app notices and push notifications to the phone, written from the Web Push standards with no push vendor in between, sent from a per-device queue in Postgres." },
     { "name": "Admin panel", "status": "live", "detail": "Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure." },
     { "name": "Content pipeline", "status": "live", "detail": "Social images and video rendered from HTML with the brand's own fonts and tokens." },
-    { "name": "Card payments", "status": "built", "detail": "Checkout, customer portal, 14-day withdrawal and payouts, built and tested end to end in Stripe's test mode. Switched on when the security programme closes." },
-    { "name": "AI agents", "status": "building", "detail": "Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Included with Sole Hand Scale. Database, staging and the four-step onboarding are built; the agent service is next." }
+    { "name": "Card payments", "status": "live", "detail": "Checkout, customer portal, 14-day withdrawal and payouts, tested end to end in Stripe test mode and switched on in production on 29 September." },
+    { "name": "AI agents", "status": "building", "detail": "Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Built: the database layer, staging, the four-step onboarding and the agent service with its Telegram link, covered by 122 tests. Next: the email intake and the language-model layer." }
   ],
   "metrics": [
     {
@@ -38,7 +39,14 @@
       "total": 6,
       "unit": "phases",
       "segmented": true,
-      "segments": ["Perimeter and backups", "Secrets", "Payments", "Identity and access", "Data, files, GDPR", "Supply chain"],
+      "segments": [
+        "Perimeter and backups",
+        "Secrets",
+        "Payments",
+        "Identity and access",
+        "Data, files, GDPR",
+        "Supply chain"
+      ],
       "note": "Phases 1 to 5 deployed in production; phase 6 rolling out."
     }
   ],
@@ -51,22 +59,24 @@
     { "title": "Supply chain and staging", "status": "active", "detail": "CI on every push with actions pinned by SHA and secret scanning, deployments gated on green CI, a separate staging stack, images pinned by digest and event-booking hardening." }
   ],
   "stats": [
-    { "value": "95", "label": "SQL migrations" },
-    { "value": "28", "label": "edge functions" },
+    { "value": "101", "label": "SQL migrations" },
+    { "value": "33", "label": "edge functions" },
     { "value": "70", "label": "app screens" },
-    { "value": "69k", "label": "lines of TypeScript" },
-    { "value": "636", "label": "security tests" },
-    { "value": "931", "label": "database rehearsal checks" },
-    { "value": "36", "label": "prerendered routes" },
-    { "value": "3", "label": "web locales" }
+    { "value": "81k", "label": "lines of TypeScript" },
+    { "value": "744", "label": "security tests" },
+    { "value": "1,071", "label": "database rehearsal checks" },
+    { "value": "122", "label": "agent service tests" },
+    { "value": "36", "label": "prerendered routes" }
   ],
   "milestones": [
     { "date": "2026-08", "title": "Website live", "status": "done", "detail": "solehand.com live in Spanish and English on 17 August: a static React build in Docker behind nginx with hand-set security headers, and a separate lead service for the contact form." },
     { "date": "2026-08", "title": "Sole Hand App", "status": "done", "detail": "Self-hosted Supabase backend with row-level security, accounts with open sign-up, member directory, events, the recommend-and-earn portal and the admin panel." },
     { "date": "2026-09", "title": "Relaunch · community", "status": "done", "detail": "Sole Hand redefined as a community of entrepreneurs: new identity and public brand manual, a Mexican variant of the site, event and Sole Hand Scale pages, build guards and the content pipeline." },
     { "date": "2026-09", "title": "Security · phases 1 to 5", "status": "done", "detail": "Full security audit of the platform, turned into a six-phase programme. Deployed: perimeter and backups, secrets, payments, identity and access, data, files and GDPR." },
-    { "date": "2026-10", "title": "AI agents", "status": "active", "detail": "A separate agent service with its own database role, so every business is isolated by row-level security inside the database itself; a credit ledger that cannot go negative; the owner's consent signed on the server; a staging stack to measure it all; and the onboarding in the app. The Telegram service comes next." },
+    { "date": "2026-09", "title": "Memberships · open", "status": "done", "detail": "Card payments switched on in production on 29 September, once phases 1 to 5 of the security programme were deployed." },
+    { "date": "2026-10", "title": "Payouts · push, reminders", "status": "done", "detail": "One-tap requests to recommend, four tax profiles and payouts by bank transfer with the IBAN encrypted; push notifications written from the standards; the community group reachable only with an active membership; account reminders; tickets and the monthly meeting handled inside the app." },
+    { "date": "2026-10", "title": "AI agents", "status": "active", "detail": "A separate agent service in Node 24 and TypeScript with its own database role, so every business is isolated by row-level security inside the database; a job queue inside Postgres; a credit ledger that cannot go negative; the owner's consent signed on the server; Telegram linked with a one-time code; a staging stack to measure it all; and the onboarding in the app. Next: the email intake and the language-model layer." },
     { "date": "next", "title": "Phase 6", "status": "active", "detail": "Supply chain and staging: CI with pinned actions and secret scanning, a separate staging stack, images pinned by digest and event-booking hardening." },
-    { "date": "later", "title": "Memberships open", "status": "planned", "detail": "Card payments switched on once the programme closes, and the first AI tools built inside Sole Hand Scale for each business." }
+    { "date": "later", "title": "AI agents live", "status": "planned", "detail": "The agent service deployed, the first agent (follow-up) reading forwarded email and drafting with a language model, then the other three, each one behind the owner's approval." }
   ]
 }

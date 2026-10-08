@@ -22,6 +22,9 @@
   <img alt="Stripe" src="https://img.shields.io/badge/Stripe-Checkout%20%C2%B7%20Connect-081C15?style=flat-square&logo=stripe&logoColor=white">
   <img alt="Docker" src="https://img.shields.io/badge/Docker-nginx-081C15?style=flat-square&logo=docker&logoColor=white">
   <img alt="Playwright" src="https://img.shields.io/badge/Playwright-prerender%20%C2%B7%20QA-081C15?style=flat-square&logo=playwright&logoColor=white">
+  <img alt="Node 24 agent service" src="https://img.shields.io/badge/Node%2024-agent%20service-081C15?style=flat-square&logo=nodedotjs&logoColor=white">
+  <img alt="Telegram Bot API" src="https://img.shields.io/badge/Telegram-Bot%20API-081C15?style=flat-square&logo=telegram&logoColor=white">
+  <img alt="Web Push, RFC 8291 and 8292" src="https://img.shields.io/badge/Web%20Push-RFC%208291%20%C2%B7%208292-081C15?style=flat-square">
 </p>
 
 # Sole Hand
@@ -30,7 +33,7 @@ Sole Hand is a community of entrepreneurs: people who already run a business and
 
 Around the community there is a public website in three locales; the Sole Hand App, where members book their seat at the events, manage their account and group, and where people who recommend have their own portal; Sole Hand Scale, a six-month programme for people starting out in which AI tools are built for each business; and an in-house pipeline for the social content.
 
-I designed and built all of it from scratch as a full-stack developer: the website and the app, the self-hosted backend and its data model, the payments, the security hardening, the lead service, the deployment and the image and video pipeline. The website and the app have been live since August 2026. Card payments are built and tested end to end, and membership sales open when the security programme below closes.
+I designed and built all of it from scratch as a full-stack developer: the website and the app, the self-hosted backend and its data model, the payments, the security hardening, the lead service, the deployment and the image and video pipeline, and now the service behind the AI agents. The website and the app have been live since August 2026, and membership sales opened on 29 September, once the first five phases of the security programme below were in production.
 
 ## Build progress
 
@@ -40,30 +43,31 @@ I designed and built all of it from scratch as a full-stack developer: the websi
 </picture>
 
 <!-- progress:start -->
-_Last updated 6 Oct 2026 · solehand.com live since 17 Aug 2026._
+_Last updated 8 Oct 2026 · solehand.com live since 17 Aug 2026._
 
 | Track | Progress | |
 |---|---|---|
-| Product modules live | 10 / 12 modules | **83%** |
+| Product modules live | 12 / 13 modules | **92%** |
 | Security hardening programme | 5 / 6 phases | **83%** |
 
 <details>
-<summary>The 12 modules behind the first bar</summary>
+<summary>The 13 modules behind the first bar</summary>
 
 | Module | Status | What it covers |
 |---|---|---|
 | Website in three locales | Live | solehand.com in Spanish, English and a Mexican variant, prerendered, with build guards on copy, prices and contrast. |
 | Public brand manual | Live | solehand.com/marca, generated from the same design tokens the website paints with. |
 | Lead service | Live | The contact form lands in its own Node service, separate from the website. |
-| Accounts and sign-up | Live | Open sign-up as a member or as someone who recommends, confirmed through the inbox. |
-| Member directory | Live | People and businesses of the community, with visibility decided by the database. |
-| Events and seat booking | Live | Event cards and first-come seat booking from the Sole Hand App. |
-| Sole Hand Scale area | Live | Programme panel and sessions for people in the six-month programme. |
-| Recommend-and-earn portal | Live | Link, QR code, materials, referrals and commissions for people who recommend the community. |
+| Accounts and sign-up | Live | Open sign-up as a member or as someone who recommends, confirmed through the inbox. An account left half done gets up to three reminders (after a day, three days and a week) with a button to the exact screen, and they stop as soon as it is complete. |
+| Member directory | Live | People and businesses of the community, with visibility decided by the database. Anyone without a business, such as someone who joined to recommend, can create one from the app. |
+| Events and seat booking | Live | Event cards and first-come seat booking from the Sole Hand App. When the ticket is sold elsewhere, the event page sells it in place through the ticketing platform, and a paid ticket is never booked as a free seat. |
+| Sole Hand Scale area | Live | Programme panel and sessions for people in the six-month programme. The monthly one-to-one is booked in an embedded calendar and lands in the app already confirmed, with its time, the meeting link, a notification and add-to-calendar. |
+| Recommend-and-earn portal | Live | Link, QR code, materials, referrals and commissions. Asking to join takes one tap and the team approves with default terms in one click. Four tax profiles, and payouts through Stripe Connect or by bank transfer, with the IBAN encrypted. |
+| Notifications | Live | In-app notices and push notifications to the phone, written from the Web Push standards with no push vendor in between, sent from a per-device queue in Postgres. |
 | Admin panel | Live | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure. |
 | Content pipeline | Live | Social images and video rendered from HTML with the brand's own fonts and tokens. |
-| Card payments | Built, not switched on | Checkout, customer portal, 14-day withdrawal and payouts, built and tested end to end in Stripe's test mode. Switched on when the security programme closes. |
-| AI agents | In progress | Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Included with Sole Hand Scale. Database, staging and the four-step onboarding are built; the agent service is next. |
+| Card payments | Live | Checkout, customer portal, 14-day withdrawal and payouts, tested end to end in Stripe test mode and switched on in production on 29 September. |
+| AI agents | In progress | Four agents (follow-up, priorities, replies and reports) that read the email a business forwards to them and talk to the owner over Telegram. They propose and ask for approval; nothing goes out on its own. Built: the database layer, staging, the four-step onboarding and the agent service with its Telegram link, covered by 122 tests. Next: the email intake and the language-model layer. |
 
 </details>
 <!-- progress:end -->
@@ -82,6 +86,7 @@ The card and the tables in this README come from [`roadmap.json`](roadmap.json).
 | Website | Spanish, English and a Mexican variant, each with its own URL, metadata and structured data generated at build time, fully prerendered for crawlers that do not run JavaScript. |
 | Admin | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure, behind the same database rules as everything else. |
 | AI agents | Four agents for the owner of each business (follow-up, priorities, replies and reports). They read the email the business forwards to them, talk to the owner over Telegram and wait for approval before anything goes out. Included with Sole Hand Scale; in progress. |
+| Notifications | What changes for a member reaches them twice: as a notice inside the app and as a push notification on the phone, the moment a seat frees up, a meeting is confirmed or a request is approved. |
 
 ## Screenshots
 
@@ -125,13 +130,48 @@ The social pieces come out of a composition system of my own. The text of each p
 | Prerender and SEO | Playwright renders 36 routes to static HTML at build time, with canonical, hreflang, sitemap and JSON-LD per locale |
 | App | React 18, React Router 7, Vite 8, TypeScript in strict mode and Tailwind CSS 4, shipped as an installable web app with 70 screens |
 | Backend | Self-hosted Supabase in Europe: PostgreSQL 17 with row-level security, auth, file storage and an API gateway |
-| Data | 95 SQL migrations, each one rehearsed in an in-memory PostgreSQL (PGlite) before it reaches production; most recent ones ship with an undo script |
-| Server logic | 28 edge functions in TypeScript on Deno, with their client library pinned to an exact version |
+| Data | 101 SQL migrations, each one rehearsed in an in-memory PostgreSQL (PGlite) before it reaches production; most recent ones ship with an undo script |
+| Server logic | 33 edge functions in TypeScript on Deno, with their client library pinned to an exact version |
+| Agent service | Node 24 and TypeScript in a container of its own: Hono for HTTP, grammY for the Telegram Bot API, pg-boss for jobs inside PostgreSQL, zod at every boundary and pino for logs. Built and tested, not deployed yet |
+| Notifications | Web Push written from the standards with WebCrypto: VAPID signatures (RFC 8292) and payload encryption (RFC 8291, aes128gcm), checked against the RFC's own test vector |
+| Scheduled jobs | systemd timers on the server that call their function through the local gateway, each with a secret of its own |
 | Payments | Stripe Checkout, customer portal and signed webhooks, and Stripe Connect for payouts to people who recommend |
 | Leads | A small Node 24 service with Nodemailer, in its own container |
 | Delivery | Docker images pinned by digest, a reverse proxy with rate limits in front, and nginx serving the static builds |
 | Testing | A `node:test` security suite, the database rehearsal, end-to-end batteries and a Playwright audit of every app screen on a phone viewport |
 | Content | HTML scenes rendered with Playwright and GSAP, ffmpeg for composition and whisper.cpp for local transcription |
+
+## AI agents
+
+The four agents are the part of the platform I am building now. Each one does a single job for the owner of a business: chase what is still waiting for an answer, order the day by priority, draft replies and write the weekly report. The owner forwards the business email to the agent and talks to it over Telegram. In this first version an agent proposes and the owner approves. Sending on its own does not exist, and the database is what enforces it.
+
+Built and tested so far:
+
+- **A service of its own.** Node 24 and TypeScript, shipped as a two-stage Docker image pinned by digest. It refuses to start if a setting is missing, and it enters PostgreSQL with a role that is not a superuser and cannot bypass row-level security.
+- **One business at a time.** All 25 agent tables have row-level security forced. The service pins the business inside each transaction from exactly one place in the code, and a test fails the build if anything else tries. With no business pinned, it sees nothing.
+- **Work queued inside the database.** Jobs live in PostgreSQL (pg-boss). Requests from the app are rows that wake the service through `LISTEN/NOTIFY` and are claimed with `FOR UPDATE SKIP LOCKED`, and a job may carry ids but never content.
+- **Credits that cannot go negative.** An append-only ledger with reservations that expire and are returned, held by database constraints rather than by application code.
+- **Telegram, linked by the owner.** The app shows a QR code with a one-time code: 24 random bytes, stored only as a SHA-256, valid for ten minutes and usable once. The service redeems it and the owner confirms the link from the app. Webhooks are checked against a secret in constant time, only private chats are served, each update is processed once, and outgoing messages pass an allowlist of methods and fields with no formatting and no link previews.
+- **Downloads without SSRF.** Whatever the service fetches goes to a pinned address, private networks are refused and every redirect is checked again.
+- **Tests.** 122 in the service (106 unit tests and 16 integration tests against a real PostgreSQL 17 in CI), contract tests in the security suite, the migration rehearsed in memory and then measured on a staging stack that runs the same images as production, and three rounds of adversarial review before the first commit.
+
+Next comes the intelligence itself, designed to stay small and checkable. A language model gets three narrow jobs: turning a forwarded email into a typed record that a schema validates, drafting a reply for the owner to approve, and transcribing voice notes. It gets no tools and no network access. Deciding when something needs a follow-up is plain SQL, answers are grounded in PostgreSQL full-text search with a pointer to the email they come from, and every prompt has to pass a set of labelled and adversarial cases before it ships. No model is trained on anyone's data.
+
+## Integrations
+
+| Service | What for | How | State |
+|---|---|---|---|
+| Stripe | Memberships, the customer portal, refunds and payouts to people who recommend | A REST client written by hand with a pinned API version, signed webhooks and Connect Express | Live |
+| cal.com | The monthly one-to-one in Sole Hand Scale | Embedded calendar; the booking reaches the app through `postMessage` and is checked on the server before it is stored | Live |
+| Luma | Tickets for events sold outside the membership | Its checkout in a frame; no third-party script runs inside the app | Live |
+| Web Push | Notifications on the phone | The browsers' own push services through the open standard, with no vendor in between | Live |
+| WhatsApp | The community's conversation | Click-to-chat links, and the group link served only to members with an active membership | Live |
+| Email | Sign-in, payment, reminder and team emails | SMTP from the functions and from auth, every message with an HTML and a plain-text version | Live |
+| Holded | Invoices for each payment | Accounting API called by a scheduled job | Built, on hold |
+| Telegram | Where the agents talk to the owner | Bot API through a webhook with a secret | Built, not deployed |
+| Inbound email | The mail a business forwards to its agent | A signed webhook from an email provider | Designed |
+| Language models | Extraction, drafts and transcription for the agents | Open-weight models through a provider pinned with no fallbacks and no data retention | Designed |
+| GitHub Actions | CI on every push | Static checks, the database rehearsal, the functions and the agent service against PostgreSQL 17 | Live |
 
 ## Architecture
 
@@ -145,22 +185,27 @@ flowchart TB
     subgraph BACK["Self-hosted Supabase"]
         GW --> AUTH["Auth<br/>email confirmation, TOTP"]
         GW --> REST["REST over PostgreSQL"]
-        GW --> FN["Edge functions<br/>28, Deno"]
+        GW --> FN["Edge functions<br/>33, Deno"]
         GW --> ST[("File storage<br/>private, with quotas")]
         AUTH & REST & FN --> DB[("PostgreSQL 17<br/>row-level security")]
     end
     FN <--> STRIPE["Stripe<br/>Checkout, webhooks, Connect"]
     FN --> SMTP["Transactional email"]
+    FN --> PUSH["Browser push services<br/>Web Push"]
     LEADS --> SMTP
+    TIMERS["Scheduled jobs<br/>systemd timers"] -->|"local gateway, own secret"| FN
+    APP -.->|"frames"| EMB["cal.com · Luma"]
+    AGENTS["Agent service<br/>Node 24, not deployed yet"] -->|"own role, forced RLS"| DB
+    AGENTS <--> TG["Telegram Bot API"]
 ```
 
-Everything runs as Docker containers on a VPS in Europe; payments go through Stripe and email through an SMTP provider.
+Everything runs as Docker containers on a VPS in Europe; payments go through Stripe and email through an SMTP provider. The agent service is built and tested and will run next to the rest when it ships.
 
 A few decisions explain most of the code. The long version is in [docs/architecture.md](docs/architecture.md).
 
 The database is the only authority. Row-level policies decide what a member can read, what the team can read and what nobody can read, in the engine and not in the code that paints the screen. A badly written screen can show too little; it cannot show too much. Operations that need privilege run in edge functions, and the key that carries that privilege never reaches the browser.
 
-Migrations are rehearsed before production sees them. Every migration runs first against a PostgreSQL 17 that lives inside the test process, with a Supabase scaffold on top, and recent ones carry a behaviour test for their policies, grants and edge cases: 931 checks today, and the CI pipeline runs them all.
+Migrations are rehearsed before production sees them. Every migration runs first against a PostgreSQL 17 that lives inside the test process, with a Supabase scaffold on top, and recent ones carry a behaviour test for their policies, grants and edge cases: 1,071 checks today, and the CI pipeline runs them all.
 
 Payments follow Stripe, not the event. The webhook applies the state Stripe holds at that moment instead of the payload it received, so retries and out-of-order deliveries end in the same place. Before opening a checkout the backend asks Stripe whether that business already has a subscription.
 
@@ -172,11 +217,17 @@ The website checks itself. Every build runs four audits (copy against the brand 
 
 The lead service stands apart. The contact form lands in its own container, so if it goes down the website stays up and the form falls back to WhatsApp.
 
+Bank details are encrypted before they are stored. An IBAN is checked with the mod-97 rule in the browser, in the function and in the database (a test keeps the three in agreement), then encrypted with AES-256-GCM using the person's account as authenticated data, so a ciphertext copied to someone else's row does not decrypt. The person who typed it cannot read it back; only the payout screen of the team can.
+
+Third parties stay inside a frame. The booking calendar and the ticket checkout are embedded from their own origin and allowed one by one in the content security policy. None of their scripts runs inside the app, and whatever they report back is validated on the server before it is stored.
+
+Scheduled work knocks on the inside door. Reminders, push delivery, the money watchdog and the nightly purges run from timers on the server. Each one calls its function through the local gateway with a secret of its own, the proxy refuses those functions from the internet even when the secret is right, and a failed run reaches the team by email instead of sitting in a log.
+
 The AI tools built inside Sole Hand Scale share one boundary: they collect and hand over, and a person decides. They introduce themselves as assistants, as Article 50 of the EU AI Act requires, data is processed in Europe, and each business signs a processing agreement under Article 28 of the GDPR.
 
 ## Security
 
-Sole Hand holds members' accounts, business details and payment records, so I treat security as part of the product. In September 2026 I audited the whole platform (code, database, infrastructure and secrets) and turned the result into a six-phase hardening programme. Phases 1 to 5 are deployed in production and phase 6 is rolling out. Card payments are built and tested, and membership sales open when the programme closes.
+Sole Hand holds members' accounts, business details and payment records, so I treat security as part of the product. In September 2026 I audited the whole platform (code, database, infrastructure and secrets) and turned the result into a six-phase hardening programme. Phases 1 to 5 are deployed in production and phase 6 is rolling out. Membership sales opened on 29 September, with phase 5 in place.
 
 <!-- phases:start -->
 | Phase | Scope | Status | What it puts in place |
@@ -200,14 +251,18 @@ The controls, area by area:
 - **Audit trail.** Immutable: not even the service role can update, delete or truncate it. Minimised: no IP addresses and no emails, only keyed fingerprints. Changes of privilege are logged too.
 - **GDPR.** Erasure works end to end across tables and files, retention periods are purged every night, and the data is processed in Europe.
 - **Payments.** Signed webhooks, a pinned API version, timeouts on every call, one subscription per business, withdrawal receipts, and a watchdog that emails the team when anything about money goes wrong, without personal data in the message.
+- **Bank details.** IBANs encrypted with AES-256-GCM before they reach the database, bound to their owner as authenticated data, and readable only from the team's payout screen. A new payout account is reviewed by the team before anything is paid to it, and its owner is told by email whenever it changes.
+- **Embedded services.** Third parties enter only as frames from their own origin, listed one by one in the content security policy; their scripts never load inside the app, and what they send back is validated on the server.
+- **Scheduled jobs.** Each timer has its own secret, and the functions they call are closed to the internet at the proxy.
 - **Supply chain.** CI on every push with a read-only token, actions pinned to a full commit SHA, secret scanning over the whole history and a dependency audit. Production deploys need a clean tree, a pushed commit and green CI. Container images are pinned by digest, function dependencies by exact version, and a separate staging stack keeps end-to-end tests away from production.
 
 The production source stays private. It is a live system with personal and payment data, and publishing all of it would hand out its attack surface.
 
 ## Quality
 
-- **Security suite.** 636 tests with `node:test` over the function contracts, checkout, webhooks and their signatures, authorisation, sign-up, GDPR, the audit trail, events, secrets handling, CI and the guards on production scripts.
-- **Database rehearsal.** Every migration and its behaviour tests run against an in-memory PostgreSQL 17: 931 passing checks, and the CI pipeline runs the whole rehearsal.
+- **Security suite.** 744 tests with `node:test` over the function contracts, checkout, webhooks and their signatures, authorisation, sign-up, GDPR, the audit trail, events, payouts and IBAN handling, push encryption, reminders, secrets handling, CI and the guards on production scripts.
+- **Database rehearsal.** Every migration and its behaviour tests run against an in-memory PostgreSQL 17: 1,071 passing checks, and the CI pipeline runs the whole rehearsal plus the undo and re-apply of the latest migration.
+- **Agent service.** 122 tests of its own, the integration ones against a real PostgreSQL 17 pinned by digest in a dedicated CI job.
 - **End to end.** Batteries for the access matrix, sign-up over the internet, Stripe webhooks in test mode, GDPR erasure, file storage, rate limits and concurrent seat booking.
 - **Build guards.** The website runs its four audits, the prerender and a locale test on every build. The app runs style, contrast, price and translation checks, email previews and a strict mobile audit that walks every screen in a real browser looking for overflow, console errors and touch targets too small for a finger.
 - **Types.** TypeScript in strict mode and oxlint across both front ends.
@@ -221,9 +276,11 @@ The production source stays private. It is a live system with personal and payme
 | Aug 2026 | Sole Hand App | Done | Self-hosted Supabase backend with row-level security, accounts with open sign-up, member directory, events, the recommend-and-earn portal and the admin panel. |
 | Sep 2026 | Relaunch · community | Done | Sole Hand redefined as a community of entrepreneurs: new identity and public brand manual, a Mexican variant of the site, event and Sole Hand Scale pages, build guards and the content pipeline. |
 | Sep 2026 | Security · phases 1 to 5 | Done | Full security audit of the platform, turned into a six-phase programme. Deployed: perimeter and backups, secrets, payments, identity and access, data, files and GDPR. |
-| Oct 2026 | AI agents | In progress | A separate agent service with its own database role, so every business is isolated by row-level security inside the database itself; a credit ledger that cannot go negative; the owner's consent signed on the server; a staging stack to measure it all; and the onboarding in the app. The Telegram service comes next. |
+| Sep 2026 | Memberships · open | Done | Card payments switched on in production on 29 September, once phases 1 to 5 of the security programme were deployed. |
+| Oct 2026 | Payouts · push, reminders | Done | One-tap requests to recommend, four tax profiles and payouts by bank transfer with the IBAN encrypted; push notifications written from the standards; the community group reachable only with an active membership; account reminders; tickets and the monthly meeting handled inside the app. |
+| Oct 2026 | AI agents | In progress | A separate agent service in Node 24 and TypeScript with its own database role, so every business is isolated by row-level security inside the database; a job queue inside Postgres; a credit ledger that cannot go negative; the owner's consent signed on the server; Telegram linked with a one-time code; a staging stack to measure it all; and the onboarding in the app. Next: the email intake and the language-model layer. |
 | Next | Phase 6 | In progress | Supply chain and staging: CI with pinned actions and secret scanning, a separate staging stack, images pinned by digest and event-booking hardening. |
-| Later | Memberships open | Planned | Card payments switched on once the programme closes, and the first AI tools built inside Sole Hand Scale for each business. |
+| Later | AI agents live | Planned | The agent service deployed, the first agent (follow-up) reading forwarded email and drafting with a language model, then the other three, each one behind the owner's approval. |
 <!-- roadmap:end -->
 
 The dated log of the build is in [docs/build-log.md](docs/build-log.md).
