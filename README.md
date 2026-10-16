@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/brand/banner.webp" alt="Sole Hand. No one builds alone: a community of entrepreneurs that meets in person, with the Sole Hand App and a six-month programme" width="100%">
+  <img src="docs/brand/banner.webp" alt="Sole Hand. No one builds alone: a community of entrepreneurs that meets in person, with the Sole Hand App and the Sole Hand Scale programme" width="100%">
 </p>
 
 <p align="center">
@@ -31,7 +31,7 @@
 
 Sole Hand is a community of entrepreneurs: people who already run a business and people who want to start one. We find what is holding each business back and solve it, with the tools needed to build well, fast and profitably. We meet in person, and whoever recommends the community gets paid for it.
 
-Around the community there is a public website in three locales; the Sole Hand App, where members book their seat at the events, manage their account and group, and where people who recommend have their own portal; Sole Hand Scale, a six-month programme for people starting out in which AI tools are built for each business; and an in-house pipeline for the social content.
+Around the community there is a public website in three locales; the Sole Hand App, where members book their seat at the events, manage their account and group, and where people who recommend have their own portal; two ways in, Kick-off, a one-off entry for people starting out, and Sole Hand Scale, the programme for businesses that are already running and want to scale, in which AI tools are built for each business; and an in-house pipeline for the social content.
 
 I designed and built all of it from scratch as a full-stack developer: the website and the app, the self-hosted backend and its data model, the payments, the security hardening, the lead service, the deployment and the image and video pipeline, and now the service behind the AI agents. The website and the app have been live since August 2026, and membership sales opened on 29 September, once the first five phases of the security programme below were in production.
 
@@ -61,7 +61,7 @@ _Last updated 8 Oct 2026 · solehand.com live since 17 Aug 2026._
 | Accounts and sign-up | Live | Open sign-up as a member or as someone who recommends, confirmed through the inbox. An account left half done gets up to three reminders (after a day, three days and a week) with a button to the exact screen, and they stop as soon as it is complete. |
 | Member directory | Live | People and businesses of the community, with visibility decided by the database. Anyone without a business, such as someone who joined to recommend, can create one from the app. |
 | Events and seat booking | Live | Event cards and first-come seat booking from the Sole Hand App. When the ticket is sold elsewhere, the event page sells it in place through the ticketing platform, and a paid ticket is never booked as a free seat. |
-| Sole Hand Scale area | Live | Programme panel and sessions for people in the six-month programme. The monthly one-to-one is booked in an embedded calendar and lands in the app already confirmed, with its time, the meeting link, a notification and add-to-calendar. |
+| Sole Hand Scale area | Live | Programme panel and sessions for people in Sole Hand Scale. The monthly one-to-one is booked in an embedded calendar and lands in the app already confirmed, with its time, the meeting link, a notification and add-to-calendar. |
 | Recommend-and-earn portal | Live | Link, QR code, materials, referrals and commissions. Asking to join takes one tap and the team approves with default terms in one click. Four tax profiles, and payouts through Stripe Connect or by bank transfer, with the IBAN encrypted. |
 | Notifications | Live | In-app notices and push notifications to the phone, written from the Web Push standards with no push vendor in between, sent from a per-device queue in Postgres. |
 | Admin panel | Live | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure. |
@@ -81,7 +81,7 @@ The card and the tables in this README come from [`roadmap.json`](roadmap.json).
 | The community | People who have run a business for years and people building their first one, in the same place. The conversation lives in WhatsApp groups by sector, and meetups are included in every membership. |
 | Events | Events, workshops, networking dinners and retreats. Each one is published from a single typed content file, so a card without its date, its place or the memberships that include it does not compile. Seats are booked from the app, first come, first served. |
 | Sole Hand App | The community on the phone: the seat at each event, the account and the group, and the portal for people who recommend. An installable web app. |
-| Sole Hand Scale | The six-month programme for people starting out: a small group, a weekly group session, a monthly mastermind and one-to-one, and the events of the semester. AI tools are built here for each business: problem first, tool second. |
+| Sole Hand Scale | The programme for businesses that are already running and want to scale: a small group, a weekly group session, a monthly mastermind and one-to-one, and the programme's own events and retreats. AI tools are built here for each business: problem first, tool second. People starting out enter through Kick-off, a one-off entry with a meeting, their website and a month of community. |
 | Recommend and earn | Recommending is free, needs no membership and pays only on memberships that are paid for and used. The rules are written down and visible. |
 | Website | Spanish, English and a Mexican variant, each with its own URL, metadata and structured data generated at build time, fully prerendered for crawlers that do not run JavaScript. |
 | Admin | Members, businesses, events, sign-ups, payouts, the audit trail and GDPR erasure, behind the same database rules as everything else. |
@@ -94,7 +94,7 @@ Taken from the live website, which is Spanish first.
 
 <table>
   <tr>
-    <td width="50%" valign="top"><img src="media/web-hero.jpg" alt="Home page"><br><sub><b>Home.</b> The community first: in-person meetings, tools shaped to each business and clear conditions.</sub></td>
+    <td width="50%" valign="top"><img src="media/web-hero.jpg" alt="Home page"><br><sub><b>Home.</b> The community first: in-person meetings, tools shaped to each business and clear conditions, over a hero that loops a five-second clip and zooms away as you scroll.</sub></td>
     <td width="50%" valign="top"><img src="media/web-en.jpg" alt="English home page"><br><sub><b>English.</b> Every locale has its own URL, metadata and structured data, generated at build time.</sub></td>
   </tr>
   <tr>
@@ -107,7 +107,7 @@ Taken from the live website, which is Spanish first.
   </tr>
   <tr>
     <td width="50%" valign="top"><img src="media/web-eventos-pagina.jpg" alt="The events page"><br><sub><b>The events page.</b> Every event is published with the same card here and in the app.</sub></td>
-    <td width="50%" valign="top"><img src="media/web-scale.jpg" alt="The Sole Hand Scale page"><br><sub><b>Sole Hand Scale.</b> Six months with a start and an end date, a small group and people alongside.</sub></td>
+    <td width="50%" valign="top"><img src="media/web-scale.jpg" alt="The Sole Hand Scale page"><br><sub><b>Sole Hand Scale.</b> For businesses that are already running and want to scale: a small group and people alongside.</sub></td>
   </tr>
   <tr>
     <td width="50%" valign="top"><img src="media/web-afiliados.jpg" alt="The recommend-and-earn page"><br><sub><b>Recommend and earn.</b> Free to join, and paid only on memberships that are paid for and used.</sub></td>
